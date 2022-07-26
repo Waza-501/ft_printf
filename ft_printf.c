@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/07/26 12:36:48 by owen          ########   odam.nl         */
+/*   Updated: 2022/07/26 13:00:31 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,26 @@ int	ft_isascii(int c)
 int		ft_printf(const char *string, ...)
 {
 	size_t			size;
-	int				placeholder;
-	va_list	arguments;
+	size_t			size_error;
+	//int				placeholder;
+	va_list			arguments;
+	char *			error;
 	
 	size = 0;
-	placeholder = 1;
+	//placeholder = 0;
+	error = "Try again";
+	size_error = ft_strlen(error);
 	va_start(arguments, string);
 
-	if (!ft_isascii(string[placeholder]))
-		return (0);
+	if (string[size] == 37)
+		{
+		while (size_error != size)
+		{
+			ft_putchar_fd(error[size], 1);
+			size++;
+		}
+		write(1, "\n", 1);
+		}
 	else
 		while (ft_strlen(string) != size)
 		{
@@ -62,6 +73,9 @@ int		ft_printf(const char *string, ...)
 
 int	main()
 {
-	printf("Test, hello there\n");
-	ft_printf("Selftest, hello there\n");
+	char *		test;
+
+	test = "Test, hello there";
+	printf("%s\n", test);
+	ft_printf("%s\n", test);
 }
