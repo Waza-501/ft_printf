@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/07/26 16:49:58 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/10 16:53:17 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static int specifier(char *string, size_t size)
 		return (NULL);
 	size++;
 	if (string[size] == 'c')
-
+		return (NULL);
+	return (NULL);
 }
 
 int	ft_printf(const char *string, ...)
@@ -78,15 +79,4 @@ int	ft_printf(const char *string, ...)
 		}
 	}
 	return (0);
-}
-
-int	main(void)
-{
-	char	*test;
-
-	test = "Test, hello there";
-	printf("Hello there, \n");
-	ft_printf("this is a test.\n");
-	printf("%s\n", test);
-	ft_printf("%s\n", test);
 }
