@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/07/26 13:00:31 by owen          ########   odam.nl         */
+/*   Updated: 2022/07/26 16:49:58 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,43 +39,54 @@ int	ft_isascii(int c)
 	return (0);
 }
 
-int		ft_printf(const char *string, ...)
+static int specifier(char *string, size_t size)
+{	
+	if (string[size] != '%')
+		return (NULL);
+	size++;
+	if (string[size] == 'c')
+
+}
+
+int	ft_printf(const char *string, ...)
 {
 	size_t			size;
 	size_t			size_error;
-	//int				placeholder;
 	va_list			arguments;
-	char *			error;
-	
+	char			*error;
+
 	size = 0;
-	//placeholder = 0;
 	error = "Try again";
 	size_error = ft_strlen(error);
 	va_start(arguments, string);
-
-	if (string[size] == 37)
-		{
-		while (size_error != size)
-		{
-			ft_putchar_fd(error[size], 1);
-			size++;
-		}
+	if (string[size] == '%')
+	{	
+		specifier(string, size);
+		// while (size_error != size)
+		// {
+		// 	ft_putchar_fd(error[size], 1);
+		// 	size++;
+		// }
 		write(1, "\n", 1);
-		}
+	}
 	else
+	{
 		while (ft_strlen(string) != size)
 		{
 			ft_putchar_fd(string[size], 1);
 			size++;
 		}
+	}
 	return (0);
 }
 
-int	main()
+int	main(void)
 {
-	char *		test;
+	char	*test;
 
 	test = "Test, hello there";
+	printf("Hello there, \n");
+	ft_printf("this is a test.\n");
 	printf("%s\n", test);
 	ft_printf("%s\n", test);
 }
