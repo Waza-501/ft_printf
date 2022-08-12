@@ -6,47 +6,23 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/10 16:53:17 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/12 18:59:23 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "libft/libft.h"
 #include <stdarg.h>
-#include <stdlib.h>
-#include <stddef.h>
 #include <unistd.h>
-#include <string.h>
-#include <stdio.h>
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write (fd, &c, 1);
-}
-
-size_t	ft_strlen(const	char *s)
-{
-	size_t	length;
-
-	length = 0;
-	while (s[length] != '\0')
-		length++;
-	return (length);
-}
-
-int	ft_isascii(int c)
-{
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
-}
-
-static int specifier(char *string, size_t size)
+static int specifier(const char *string, size_t size)
 {	
 	if (string[size] != '%')
-		return (NULL);
+		return (0);
 	size++;
 	if (string[size] == 'c')
-		return (NULL);
-	return (NULL);
+		return (0);
+	return (0);
 }
 
 int	ft_printf(const char *string, ...)
@@ -63,11 +39,11 @@ int	ft_printf(const char *string, ...)
 	if (string[size] == '%')
 	{	
 		specifier(string, size);
-		// while (size_error != size)
-		// {
-		// 	ft_putchar_fd(error[size], 1);
-		// 	size++;
-		// }
+		while (size_error != size)
+		{
+			ft_putchar_fd(error[size], 1);
+			size++;
+		}
 		write(1, "\n", 1);
 	}
 	else

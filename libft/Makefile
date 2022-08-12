@@ -6,11 +6,11 @@
 #    By: ohearn <ohearn@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/11 20:08:26 by ohearn        #+#    #+#                  #
-#    Updated: 2022/08/10 16:56:00 by ohearn        ########   odam.nl          #
+#    Updated: 2022/08/12 20:09:38 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=		ft_atoi.c\
+SRCS		=	ft_atoi.c\
 				ft_bzero.c\
 				ft_calloc.c\
 				ft_isalnum.c\
@@ -57,9 +57,9 @@ BONUS_SRCS	=	ft_lstnew_bonus.c\
 				
 
 NAME	=	libft.a
-CC		=	@gcc
+CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra -c
-AR		=	@ar rcs
+AR		=	ar rcs
 OBJS	=	$(SRCS:%.c=%.o)
 BONUS	=	$(BONUS_SRCS:%.c=%.o)
 
@@ -70,6 +70,8 @@ $(NAME):	$(OBJS)
 				$(AR) $(NAME) $(OBJS)
 $(OBJS):	$(SRCS)
 				$(CC) $(CFLAGS) $(SRCS)
+$(BONUS):	$(BONUS_SRCS)
+				$(CC) $(CFLAGS)	$(BONUS_SRCS)
 
 bonus:		$(OBJS) $(BONUS)
 				$(AR) $(NAME) $(BONUS)
@@ -78,10 +80,13 @@ bonus:		$(OBJS) $(BONUS)
 clean:
 			@rm -rf $(OBJS)
 			@rm -rf $(BONUS)
-			$(info Done!)
+			@echo ""
+			@echo Removed object files libft functions.
 
 fclean:		clean
 			@rm -rf $(NAME)
+			@echo ""
+			@echo Removed all made libft functions.
 
 re:	fclean all
 

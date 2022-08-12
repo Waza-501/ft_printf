@@ -6,16 +6,16 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/10 15:56:35 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/10 15:57:45 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/12 19:00:26 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "./libft/libft.h"
+#include "libft/libft.h"
 #include <string.h>
 #include <stdio.h>
 
-int	main(void)
+int	main()
 {
 	char	*test;
 
