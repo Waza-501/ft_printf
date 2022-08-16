@@ -6,36 +6,31 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/16 15:00:02 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/16 18:36:25 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/16 20:45:53 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	hex_converter(unsigned long int dec)
+int	hex_converter(unsigned long dec)
 {
-	int	hex;
+	unsigned int	hex;
 	int	size;
 
 	size = 0;
 	hex = (dec % 16);
 	if (dec > 15)
 		size += hex_converter(dec / 16);
+	if (hex < 10)
+		hex += 48;
 	else
-	{
-		if (hex < 10)
-			hex += '0';
-		if (hex > 10)
-			hex += 'a';
-	}
-	printf("%x", hex);
+		hex += 87;
 	ft_putchar_fd(hex, 1);
 	size++;
 	return (size);
 }
 
-int	print_p(unsigned long int dec)
+int	print_p(unsigned long dec)
 {
 	int	size;
 

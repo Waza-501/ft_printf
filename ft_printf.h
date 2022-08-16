@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:58:09 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/16 17:26:38 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/16 20:15:43 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include <stddef.h>
 
 int			ft_printf(const char *string, ...);
-int			print_p(unsigned long int dec);
+int			print_p(unsigned long dec);
 
 #endif

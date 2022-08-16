@@ -1,0 +1,5 @@
+make
+gcc main.c libftprintf.a
+./a.out
+
+make fclean

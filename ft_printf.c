@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/16 18:22:30 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/16 20:14:46 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-static int	specifier(const char *string, va_list arg)
+int	specifier(const char *string, va_list arg)
 {	
 	int		size;
 	char	*str;
@@ -36,7 +36,7 @@ static int	specifier(const char *string, va_list arg)
 	}
 	else if (string[size] == 'p')
 	{
-		print_p(va_arg(arg, unsigned long int));
+		size = print_p(va_arg(arg, unsigned long));
 	}
 	return (size);
 }
