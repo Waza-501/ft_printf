@@ -6,7 +6,7 @@
 #    By: ohearn <ohearn@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/25 20:34:13 by ohearn        #+#    #+#                  #
-#    Updated: 2022/08/12 20:09:56 by ohearn        ########   odam.nl          #
+#    Updated: 2022/08/13 21:25:01 by owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ all:			$(NAME)
 				@echo Finished compiling mandatory part!
 
 $(LIBFT): 
-				Make -C libft
+				make -C libft
 $(NAME):		$(OBJECTS) $(LIBFT)
 				$(AR) $(NAME) $(OBJECTS)
 				ar -q $(LIBFT) $(OBJECTS)
@@ -36,7 +36,7 @@ $(OBJECTS):		$(SRCS)
 
 clean:			
 				@rm -rf $(OBJECTS)
-				@Make clean -C ./libft
+				@make clean -C ./libft
 				@echo Removed object files.
 
 fclean:			
@@ -44,7 +44,7 @@ fclean:
 				@echo ""
 				@echo Removed all object files.
 				@rm -rf $(NAME)
-				@Make fclean -C ./libft
+				@make fclean -C ./libft
 				@echo ""
 				@echo Cleanup completed.
 

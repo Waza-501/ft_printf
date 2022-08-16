@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/12 18:59:23 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/13 21:33:28 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static int specifier(const char *string, size_t size)
 		return (0);
 	size++;
 	if (string[size] == 'c')
-		return (0);
+	{
+		size++;
+		write (1, string[size], 1);
+	}
 	return (0);
 }
 

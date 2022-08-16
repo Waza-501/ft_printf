@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/10 15:56:35 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/12 19:00:26 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/13 21:32:47 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ int	main()
 	ft_printf("this is a test.\n");
 	printf("%s\n", test);
 	ft_printf("%s\n", test);
+	printf("%c\n", test);
+	ft_printf("%c\n", test);
 }
