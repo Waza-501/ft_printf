@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/13 21:33:28 by owen          ########   odam.nl         */
+/*   Updated: 2022/08/16 18:22:30 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,54 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-static int specifier(const char *string, size_t size)
+static int	specifier(const char *string, va_list arg)
 {	
-	if (string[size] != '%')
-		return (0);
-	size++;
-	if (string[size] == 'c')
+	int		size;
+	char	*str;
+
+	size = 0;
+	if (string[size] == 'c' || string[size] == 'd')
 	{
+		ft_putchar_fd(va_arg(arg, int), 1);
 		size++;
-		write (1, string[size], 1);
 	}
-	return (0);
+	else if (string[size] == 's')
+	{
+		str = va_arg(arg, char *);
+		if (!str)
+			return (0);
+		ft_putstr_fd(str, 1);
+		size++;
+	}
+	else if (string[size] == 'p')
+	{
+		print_p(va_arg(arg, unsigned long int));
+	}
+	return (size);
 }
 
 int	ft_printf(const char *string, ...)
 {
-	size_t			size;
-	size_t			size_error;
-	va_list			arguments;
-	char			*error;
+	int					size;
+	va_list				arg;
 
 	size = 0;
-	error = "Try again";
-	size_error = ft_strlen(error);
-	va_start(arguments, string);
-	if (string[size] == '%')
-	{	
-		specifier(string, size);
-		while (size_error != size)
-		{
-			ft_putchar_fd(error[size], 1);
-			size++;
-		}
-		write(1, "\n", 1);
-	}
-	else
+	va_start(arg, string);
+	while (*string)
 	{
-		while (ft_strlen(string) != size)
+		if (*string == '%')
 		{
-			ft_putchar_fd(string[size], 1);
+			string++;
+			size += specifier(string, arg);
+			if (size < 0)
+				return (size);
+		}
+		else
+		{
+			ft_putchar_fd(*string, 1);
 			size++;
 		}
+		string++;
 	}
-	return (0);
+	return (size);
 }

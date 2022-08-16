@@ -1,35 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   print_p.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/10 15:56:35 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/16 14:47:47 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/16 15:00:02 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/16 18:36:25 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
-#include <string.h>
 #include <stdio.h>
 
-int	main(void)
+int	hex_converter(unsigned long int dec)
 {
-	char	*test;
-	int		test_2;
-	int		*test_3;
+	int	hex;
+	int	size;
 
-	test = "Test, hello there";
-	test_2 = '3';
-	test_3 = &test_2;
-	printf("Hello there, \n");
-	ft_printf("this is a test.\n");
-	printf("%s\n", test);
-	ft_printf("%s\n", test);
-	printf("%c\n", test_2);
-	ft_printf("%c\n", test_2);
-	printf("%p\n", test_3);
-	ft_printf("%p\n", test_3);
+	size = 0;
+	hex = (dec % 16);
+	if (dec > 15)
+		size += hex_converter(dec / 16);
+	else
+	{
+		if (hex < 10)
+			hex += '0';
+		if (hex > 10)
+			hex += 'a';
+	}
+	printf("%x", hex);
+	ft_putchar_fd(hex, 1);
+	size++;
+	return (size);
+}
+
+int	print_p(unsigned long int dec)
+{
+	int	size;
+
+	size = 0;
+	ft_putstr_fd("0x", 1);
+	size += 2;
+	size += hex_converter(dec);
+	return (size);
 }

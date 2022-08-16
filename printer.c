@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   printer.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/07/25 20:58:09 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/16 17:26:38 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/16 11:31:31 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/16 13:48:02 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
-# include "libft/libft.h"
-# include <stddef.h>
-
-int			ft_printf(const char *string, ...);
-int			print_p(unsigned long int dec);
-
-#endif
+int	printer(const char *string)
+{
+	
+}
