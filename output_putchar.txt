@@ -1,0 +1,8 @@
+
+Removed all object files.
+
+Removed object files libft functions.
+
+Removed all made libft functions.
+
+Cleanup completed.

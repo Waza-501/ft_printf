@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/16 15:00:02 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 15:32:24 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/17 19:31:01 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	hex_converter(unsigned long dec, int modif)
 		hex += 48;
 	else
 		hex += (55 + modif);
-	ft_putchar_fd(hex, 1);
-	size++;
+	size += fc_putchar(hex);
 	return (size);
 }
 
@@ -39,7 +38,7 @@ int	print_hex(unsigned long dec, int id)
 	modif = 0;
 	if (id == 'p')
 	{
-		ft_putstr_fd("0x", 1);
+		fc_putstr("0x");
 		size += 2;
 	}
 	if (id == 'p' || id == 'x')

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 16:25:08 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/17 18:45:20 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,15 @@ int	specifier(const char *string, va_list arg)
 	if (string[size] == 'c' || string[size] == '%')
 		size += print_cha(va_arg(arg, int), id);
 	else if (string[size] == 's')
-		size += print_s(va_arg(arg, char *));
+		size += print_str(va_arg(arg, char *));
 	else if (string[size] == 'p' || string[size] == 'x' || string[size] == 'X')
 		size += print_hex(va_arg(arg, unsigned long), id);
 	else if (string[size] == 'd' || string[size] == 'i')
-	{
-		ft_putnbr_fd(va_arg(arg, int), 1);
-		size++;
-	}
+		size += fc_putnbr(va_arg(arg, int));
 	else if (string[size] == 'u')
 		size += print_dec(va_arg(arg, unsigned int));
+	else
+		return (-1);
 	return (size);
 }
 
@@ -52,10 +51,12 @@ int	ft_printf(const char *string, ...)
 		{
 			string++;
 			size += specifier(string, arg);
+			if (size < 0)
+				return (size);
 		}
 		else
 		{
-			ft_putchar_fd(*string, 1);
+			fc_putchar(*string);
 			size++;
 		}
 		string++;

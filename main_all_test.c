@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/10 15:56:35 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 16:19:03 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/17 20:58:19 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	dec_tests(void)
 	int				test_5;
 	unsigned int	test_6;
 
-	test_4 = 664737;
-	test_5 = 42424242;
+	test_4 = 0;
+	test_5 = 424242;
 	test_6 = 4294967290;
 	printf("%d\n", test_4);
 	ft_printf("%d\n", test_4);

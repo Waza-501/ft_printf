@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   print_str.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/07/25 20:58:09 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 18:43:31 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/17 14:08:04 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/17 17:47:16 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stddef.h>
-# include <stdio.h>
+char	print_str(char *string)
+{
+	int		size;
 
-int			ft_printf(const char *string, ...);
-int			print_hex(unsigned long dec, int id);
-int			print_dec(unsigned int dec);
-char		print_str(char *string);
-int			print_cha(char string, int c);
-int			fc_putchar(char c);
-int			fc_putstr(char *str);
-int			fc_putnbr(int n);
-
-#endif
+	size = 0;
+	if (!string)
+		return (0);
+	size = fc_putstr(string);
+	return (size);
+}

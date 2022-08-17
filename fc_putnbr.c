@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   fc_putnbr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/07/25 20:58:09 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 18:43:31 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/17 16:39:01 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/17 21:04:24 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stddef.h>
-# include <stdio.h>
+int	calculator(int n)
+{
+	int		size;
+	int		ret;
 
-int			ft_printf(const char *string, ...);
-int			print_hex(unsigned long dec, int id);
-int			print_dec(unsigned int dec);
-char		print_str(char *string);
-int			print_cha(char string, int c);
-int			fc_putchar(char c);
-int			fc_putstr(char *str);
-int			fc_putnbr(int n);
+	size = 0;
+	ret = (n % 10);
+	if (n > 9)
+		size += calculator(n / 10);
+	size += fc_putchar((ret + '0'));
+	return (size);
+}
 
-#endif
+int	fc_putnbr(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+	{
+		len += fc_putchar('0');
+		return (len);
+	}
+	if (n == '-')
+		len += fc_putchar('-');
+	len += calculator(n);
+	return (len);
+}
