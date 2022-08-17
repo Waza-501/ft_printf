@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/17 16:39:01 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 21:04:24 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/17 21:27:56 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ int	fc_putnbr(int n)
 		len += fc_putchar('0');
 		return (len);
 	}
-	if (n == '-')
+	if (n < 0)
+	{
 		len += fc_putchar('-');
+		n *= -1;
+	}
 	len += calculator(n);
 	return (len);
 }
