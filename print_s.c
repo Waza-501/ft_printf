@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   print_s.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/07/25 20:58:09 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 15:53:22 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/17 14:08:04 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/17 14:14:23 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stddef.h>
+char	print_s(char *string)
+{
+	int		size;
 
-int			ft_printf(const char *string, ...);
-int			print_hex(unsigned long dec, int id);
-int			print_dec(unsigned int dec);
-char		print_s(char *string);
-int			print_cha(char string, int c);
-
-#endif
+	size = 0;
+	if (!string)
+		return (0);
+	ft_putstr_fd(string, 1);
+	size++;
+	return (size);
+}

@@ -6,7 +6,7 @@
 #    By: ohearn <ohearn@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/25 20:34:13 by ohearn        #+#    #+#                  #
-#    Updated: 2022/08/17 12:07:34 by owen          ########   odam.nl          #
+#    Updated: 2022/08/17 15:47:33 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ AR				=	ar rcs
 SRCS			=	ft_printf.c\
 					print_hex.c\
 					print_dec.c\
+					print_s.c\
+					print_cha.c\
 
 LIBFT			=	libft/libft.a
 OBJECTS			=	$(SRCS:%.c=%.o)
