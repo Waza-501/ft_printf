@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/16 20:14:46 by owen          ########   odam.nl         */
+/*   Updated: 2022/08/17 12:36:22 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	specifier(const char *string, va_list arg)
 	char	*str;
 
 	size = 0;
-	if (string[size] == 'c' || string[size] == 'd')
+	if (string[size] == 'c')
 	{
 		ft_putchar_fd(va_arg(arg, int), 1);
 		size++;
@@ -35,8 +35,12 @@ int	specifier(const char *string, va_list arg)
 		size++;
 	}
 	else if (string[size] == 'p')
+		size = print_hex(va_arg(arg, unsigned long));
+	else if (string[size] == 'd')
 	{
-		size = print_p(va_arg(arg, unsigned long));
+		//size = print_dec(va_arg(arg, unsigned int));
+		ft_putnbr_fd(va_arg(arg, int), 1);
+		size++;
 	}
 	return (size);
 }

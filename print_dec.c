@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   print_dec.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/07/25 20:58:09 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 12:30:10 by owen          ########   odam.nl         */
+/*   Created: 2022/08/17 11:59:42 by owen          #+#    #+#                 */
+/*   Updated: 2022/08/17 12:32:56 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+#include <stdio.h>
 
-# include "libft/libft.h"
-# include <stddef.h>
-
-int			ft_printf(const char *string, ...);
-int			print_hex(unsigned long dec);
-int			print_dec(unsigned int dec);
-
-#endif
+int	print_dec(unsigned int dec)
+{
+	int		size;
+	unsigned int		ret;
+	
+	size = 0;
+	ret = (dec % 10);
+	if (dec > 9)
+		size += print_dec(dec / 10);
+	ft_putnbr_fd(ret, 1);
+	size++;
+	return (size);
+}

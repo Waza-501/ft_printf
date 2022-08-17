@@ -1,5 +1,4 @@
-make
+make > output.txt
 gcc main.c libftprintf.a
 ./a.out
-
-make fclean
+make fclean >> output.txt
