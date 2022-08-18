@@ -6,13 +6,13 @@
 #    By: ohearn <ohearn@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/25 20:34:13 by ohearn        #+#    #+#                  #
-#    Updated: 2022/08/18 13:04:59 by ohearn        ########   odam.nl          #
+#    Updated: 2022/08/18 16:57:45 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libftprintf.a
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra -c
+CFLAGS			=	-Wall -Werror -Wextra -c -g
 AR				=	ar rcs
 SRCS			=	ft_printf.c\
 					fc_print_hex.c\

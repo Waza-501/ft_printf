@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 14:14:06 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/18 18:45:39 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ int	specifier(const char *string, va_list arg)
 	int		id;
 
 	size = 0;
-	if (!string)
-		return (0);
 	id = string[size];
-	if (string[size] == 'c' || string[size] == '%')
-		size += fc_print_cha(va_arg(arg, int), id);
+	if (string[size] == 'c')
+		size += fc_print_cha(va_arg(arg, int));
 	else if (string[size] == 's')
 		size += fc_print_str(va_arg(arg, char *));
-	else if (string[size] == 'p' || string[size] == 'x' || string[size] == 'X')
+	else if (string[size] == 'p')
 		size += fc_print_hex(va_arg(arg, unsigned long), id);
 	else if (string[size] == 'd' || string[size] == 'i')
 		size += fc_putnbr(va_arg(arg, int));
 	else if (string[size] == 'u')
 		size += fc_print_dec(va_arg(arg, unsigned int));
-	else
-		return (-1);
+	else if (string[size] == 'x' || string[size] == 'X')
+		size += fc_print_hex(va_arg(arg, unsigned int), id);
+	else if (string[size] == '%')
+		size += fc_putchar('%');
 	return (size);
 }
 
@@ -50,8 +50,6 @@ int	ft_printf(const char *string, ...)
 		{
 			string++;
 			size += specifier(string, arg);
-			if (size < 0)
-				return (size);
 		}
 		else
 			size += fc_putchar(*string);

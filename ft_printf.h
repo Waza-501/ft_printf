@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:58:09 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 13:04:43 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/18 18:37:29 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int			ft_printf(const char *string, ...);
 int			fc_print_hex(unsigned long dec, int id);
 int			fc_print_dec(unsigned int dec);
-char		fc_print_str(char *string);
-int			fc_print_cha(char string, int c);
+int			fc_print_str(char *string);
+int			fc_print_cha(char string);
 
 #endif
