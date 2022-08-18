@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/10 15:56:35 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 12:58:32 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/18 13:39:37 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,23 @@ void	dec_tests(void)
 	test_4 = 42;
 	test_5 = -2183648;
 	test_6 = 4294967290;
-	printf("%d\n", test_4);
-	ft_printf("%d\n", test_4);
-	printf("%i\n", test_5);
-	ft_printf("%i\n", test_5);
-	printf("%u\n", test_6);
-	ft_printf("%u\n", test_6);
+	printf("%d\n", printf("%d\n", test_4));
+	ft_printf("%d\n", ft_printf("%d\n", test_4));
+	printf("%d\n", printf("%i\n", test_5));
+	ft_printf("%d\n", ft_printf("%i\n", test_5));
+	printf("%d\n", printf("%u\n", test_6));
+	ft_printf("%d\n", ft_printf("%u\n", test_6));
+}
+
+void	hex_tests(void)
+{
+	char	hex1;
+	char	hex2;
+
+	hex1 = 12345;
+	hex2 = 12345;
+	printf("%d\n", printf("%x%X\n", hex1, hex2));
+	ft_printf("%d\n", ft_printf("%x%X\n", hex1, hex2));
 }
 
 int	main(void)
@@ -51,4 +62,5 @@ int	main(void)
 	dec_tests();
 	printf("%%\n");
 	ft_printf("%%\n");
+	hex_tests();
 }

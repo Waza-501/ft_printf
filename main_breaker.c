@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/17 16:11:18 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 12:56:04 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/18 14:45:05 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 int	main(void)
 {
-	int		test;
-	char	*string;
+	int				test;
+	char			*string;
+	unsigned int	nul;
 
+	nul = NULL;
 	test = 1234567890;
-	string = 0;
-	printf("%d\n", printf("%%\aaa%%\n"));
-	ft_printf("%d\n", ft_printf("%%\aaa%%\n"));
-	printf("%d\n", printf("%s\n", string));
-	ft_printf("%d\n", ft_printf("%s\n", string));
-	printf("%d\n", ft_printf("%i\n", test));
-	ft_printf("%d\n", printf("%i\n", test));
+	string = "0";
+	printf("%u\n", NULL);
+	ft_printf("%u\n", NULL);
+	printf("%d\n", printf("%i%d%c%%%s%p%x%X%u\n", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL));
+	ft_printf("%d\n", ft_printf("%i%d%c%%%s%p%x%X%u\n", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL));
 }
