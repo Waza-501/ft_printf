@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 18:45:20 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/18 09:15:29 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	ft_printf(const char *string, ...)
 				return (size);
 		}
 		else
-		{
-			fc_putchar(*string);
-			size++;
-		}
+			size += fc_putchar(*string);
 		string++;
 	}
 	return (size);

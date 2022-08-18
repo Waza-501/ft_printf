@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/10 15:56:35 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 21:31:33 by ohearn        ########   odam.nl         */
+/*   Updated: 2022/08/18 08:29:18 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	dec_tests(void)
 	int				test_5;
 	unsigned int	test_6;
 
-	test_4 = 0;
-	test_5 = -2147483648;
+	test_4 = 42;
+	test_5 = -2183648;
 	test_6 = 4294967290;
 	printf("%d\n", test_4);
 	ft_printf("%d\n", test_4);
@@ -39,7 +39,7 @@ int	main(void)
 	int				*test_3;
 
 	test = "Test, hello there";
-	test_2 = '3';
+	test_2 = 'a';
 	test_3 = &test_2;
 	printf("Hello there, \n");
 	ft_printf("this is a test.\n");
