@@ -6,12 +6,11 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 20:43:40 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 09:15:29 by owen          ########   odam.nl         */
+/*   Updated: 2022/08/18 13:05:37 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 #include <stdarg.h>
 
 int	specifier(const char *string, va_list arg)
@@ -24,15 +23,15 @@ int	specifier(const char *string, va_list arg)
 		return (0);
 	id = string[size];
 	if (string[size] == 'c' || string[size] == '%')
-		size += print_cha(va_arg(arg, int), id);
+		size += fc_print_cha(va_arg(arg, int), id);
 	else if (string[size] == 's')
-		size += print_str(va_arg(arg, char *));
+		size += fc_print_str(va_arg(arg, char *));
 	else if (string[size] == 'p' || string[size] == 'x' || string[size] == 'X')
-		size += print_hex(va_arg(arg, unsigned long), id);
+		size += fc_print_hex(va_arg(arg, unsigned long), id);
 	else if (string[size] == 'd' || string[size] == 'i')
 		size += fc_putnbr(va_arg(arg, int));
 	else if (string[size] == 'u')
-		size += print_dec(va_arg(arg, unsigned int));
+		size += fc_print_dec(va_arg(arg, unsigned int));
 	else
 		return (-1);
 	return (size);
@@ -58,5 +57,6 @@ int	ft_printf(const char *string, ...)
 			size += fc_putchar(*string);
 		string++;
 	}
+	va_end(arg);
 	return (size);
 }

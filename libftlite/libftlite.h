@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main_breaker.c                                     :+:    :+:            */
+/*   libftlite.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/17 16:11:18 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 12:56:04 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/18 12:29:43 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/18 12:50:22 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#ifndef LIBFTLITE_H
+# define LIBFTLITE_H
 
-int	main(void)
-{
-	int		test;
-	char	*string;
+# include <unistd.h>
+# include <stdio.h>
 
-	test = 1234567890;
-	string = 0;
-	printf("%d\n", printf("%%\aaa%%\n"));
-	ft_printf("%d\n", ft_printf("%%\aaa%%\n"));
-	printf("%d\n", printf("%s\n", string));
-	ft_printf("%d\n", ft_printf("%s\n", string));
-	printf("%d\n", ft_printf("%i\n", test));
-	ft_printf("%d\n", printf("%i\n", test));
-}
+int			fc_putchar(char c);
+int			fc_putstr(char *str);
+int			fc_putnbr(int n);
+size_t		fc_strlen(const char *s);
+
+#endif

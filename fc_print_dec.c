@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   putcharmain.c                                      :+:    :+:            */
+/*   fc_print_dec.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/17 20:22:18 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/17 21:38:29 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/17 11:59:42 by owen          #+#    #+#                 */
+/*   Updated: 2022/08/18 13:05:57 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <string.h>
 
-int	main(void)
+int	fc_print_dec(unsigned int dec)
 {
-	int	test;
-	int	ret;
-	int	rett;
+	int					size;
+	unsigned int		ret;
 
-	test = -2147483648;
-	ret = ft_printf("%i\n", test);
-	rett = printf("%i\n", test);
-	printf("%i\n", ret);
-	printf("%i\n", rett);
+	size = 0;
+	ret = (dec % 10);
+	if (dec > 9)
+		size += fc_print_dec(dec / 10);
+	fc_putchar((ret + '0'));
+	return (size);
 }

@@ -6,7 +6,7 @@
 #    By: ohearn <ohearn@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/07/25 20:34:13 by ohearn        #+#    #+#                  #
-#    Updated: 2022/08/17 18:23:40 by ohearn        ########   odam.nl          #
+#    Updated: 2022/08/18 13:04:59 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,13 @@ CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra -c
 AR				=	ar rcs
 SRCS			=	ft_printf.c\
-					print_hex.c\
-					print_dec.c\
-					print_str.c\
-					print_cha.c\
-					fc_putchar.c\
-					fc_putstr.c\
-					fc_putnbr.c\
+					fc_print_hex.c\
+					fc_print_dec.c\
+					fc_print_str.c\
+					fc_print_cha.c\
 
-LIBFT			=	libft/libft.a
+
+LIBFTLITE		=	libftlite/libftlite.a
 OBJECTS			=	$(SRCS:%.c=%.o)
 
 
@@ -31,19 +29,19 @@ all:			$(NAME)
 				@echo ""
 				@echo Finished compiling mandatory part!
 
-$(LIBFT): 
-				make -C libft
-$(NAME):		$(OBJECTS) $(LIBFT)
+$(LIBFTLITE): 
+				make -C libftlite
+$(NAME):		$(OBJECTS) $(LIBFTLITE)
 				$(AR) $(NAME) $(OBJECTS)
-				ar -q $(LIBFT) $(OBJECTS)
-				cp $(LIBFT) $(NAME)
+				ar -q $(LIBFTLITE) $(OBJECTS)
+				cp $(LIBFTLITE) $(NAME)
 					
 $(OBJECTS):		$(SRCS)
 					$(CC) $(CFLAGS) $(SRCS)
 
 clean:			
 				@rm -rf $(OBJECTS)
-				@make clean -C ./libft
+				@make clean -C ./libftlite
 				@echo Removed object files.
 
 fclean:			
@@ -51,7 +49,7 @@ fclean:
 				@echo ""
 				@echo Removed all object files.
 				@rm -rf $(NAME)
-				@make fclean -C ./libft
+				@make fclean -C ./libftlite
 				@echo ""
 				@echo Cleanup completed.
 

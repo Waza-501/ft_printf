@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main_breaker.c                                     :+:    :+:            */
+/*   fc_putchar.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/17 16:11:18 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 12:56:04 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/17 17:00:26 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/18 12:45:46 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libftlite.h"
 
-int	main(void)
+int	fc_putchar(char c)
 {
-	int		test;
-	char	*string;
+	int	tally;
 
-	test = 1234567890;
-	string = 0;
-	printf("%d\n", printf("%%\aaa%%\n"));
-	ft_printf("%d\n", ft_printf("%%\aaa%%\n"));
-	printf("%d\n", printf("%s\n", string));
-	ft_printf("%d\n", ft_printf("%s\n", string));
-	printf("%d\n", ft_printf("%i\n", test));
-	ft_printf("%d\n", printf("%i\n", test));
+	tally = 0;
+	tally += write (1, &c, 1);
+	return (tally);
 }

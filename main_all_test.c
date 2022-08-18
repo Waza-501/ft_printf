@@ -6,12 +6,11 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/10 15:56:35 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 08:29:18 by owen          ########   odam.nl         */
+/*   Updated: 2022/08/18 12:58:32 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 #include <string.h>
 #include <stdio.h>
 

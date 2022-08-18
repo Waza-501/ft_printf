@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main_breaker.c                                     :+:    :+:            */
+/*   fc_print_cha.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/08/17 16:11:18 by ohearn        #+#    #+#                 */
-/*   Updated: 2022/08/18 12:56:04 by ohearn        ########   odam.nl         */
+/*   Created: 2022/08/17 15:35:55 by ohearn        #+#    #+#                 */
+/*   Updated: 2022/08/18 13:04:15 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	main(void)
+int	fc_print_cha(char string, int c)
 {
-	int		test;
-	char	*string;
+	int	size;
 
-	test = 1234567890;
-	string = 0;
-	printf("%d\n", printf("%%\aaa%%\n"));
-	ft_printf("%d\n", ft_printf("%%\aaa%%\n"));
-	printf("%d\n", printf("%s\n", string));
-	ft_printf("%d\n", ft_printf("%s\n", string));
-	printf("%d\n", ft_printf("%i\n", test));
-	ft_printf("%d\n", printf("%i\n", test));
+	size = 0;
+	if (c == 'c')
+		size = fc_putchar(string);
+	if (c == '%')
+		size = fc_putchar('%');
+	return (size);
 }
