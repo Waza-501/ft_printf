@@ -6,11 +6,40 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 16:02:03 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/22 11:15:42 by owen          ########   odam.nl         */
+/*   Updated: 2024/10/22 13:07:21 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	is_specifier(char c)
+{
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd'
+		|| c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%');
+}
+
+int	fc_putchar(char c)
+{
+	int	tally;
+
+	tally = 0;
+	tally += write (1, &c, 1);
+	write(1, '\n', 1);
+	return (tally);
+}
+
+int	fc_print_dec(unsigned int dec)
+{
+	int					size;
+	unsigned int		ret;
+
+	size = 0;
+	ret = (dec % 10);
+	if (dec > 9)
+		size += fc_print_dec(dec / 10);
+	size += fc_putchar((ret + '0'));
+	return (size);
+}
 
 size_t	ft_strlen(char *str)
 {
