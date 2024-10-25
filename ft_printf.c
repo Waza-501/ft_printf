@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 15:58:34 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/10/24 14:34:45 by owen          ########   odam.nl         */
+/*   Updated: 2024/10/25 12:59:35 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static int	find_conv(const char *str, va_list args, int idx)
 	return (0);
 }
 
+/*need to change this to print until it finds
+a specifier,but for now, this works*/
 int	ft_printf(const char *str, ...)
 {
 	va_list		args;
@@ -53,10 +55,8 @@ int	ft_printf(const char *str, ...)
 		else if (*str != '\0')
 		{
 			nbr += write(1, str, 1);
-			/*need to change this to print until it finds a specifier, but for now, this works*/
 		}
 		str++;
-
 	}
 	va_end(args);
 	return (nbr);
