@@ -6,81 +6,58 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 15:58:34 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/10/22 13:09:54 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/10/24 14:34:45 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
 
-// int	find_conv(const char *str, va_list args, int idx, t_list *print)
-// {
-// 	if (str[idx] == 'c' || str[idx] == 's')
-// 	{
-// 		if (add_char(print, args, str[idx]) != 0)
-// 			return (0);
-// 		return (2);
-// 	}
-// 	else if (str[idx] == 'd' || str[idx] == 'i' || str[idx] == 'u')
-// 	{
-// 		if (add_dex(print, args, str[idx]) != 0)
-// 			return (0);
-// 		return (2);
-// 	}
-// 	else if (str[idx] == 'p' || str[idx] == 'x' || str[idx] == 'X')
-// 	{
-// 		if (add_hex(print, args, str[idx]) != 0)
-// 			return (0);
-// 		return (2);
-// 	}
-// 	else if (str[idx] == '%')
-// 	{
-// 		if (add_hex(print, args, str[idx]) != 0)
-// 			return (0);
-// 		return (2);
-// 	}
-// 	return (0);
-// }
-
-char	*process_normal(t_list *lst, char *str)
+static int	find_conv(const char *str, va_list args, int idx)
 {
-	
-}
-
-void	split_source(t_list *lst, va_list args, const char *str)
-{
-	while (str)
-	{
-		if (str != '%')
-		{
-			process_normal(lst, str);
-		}
-		else if (str == '%' && is_specifier(str[1]))
-		{
-
-		}
-		else if (str == '%' && is_specifier(str[1] != 0))
-		{
-			str++;
-		}
-	}
+	if (str[idx] == 'c')
+		return (fc_putchar(va_arg(args, int)));
+	else if (str[idx] == 's')
+		return (fc_putstr(va_arg(args, char *)));
+	else if (str[idx] == 'p')
+		return (fc_putpnt(va_arg(args, void *)));
+	else if (str[idx] == 'd')
+		return (fc_print_dec(va_arg(args, int)));
+	else if (str[idx] == 'i')
+		return (fc_print_int(va_arg(args, int)));
+	else if (str[idx] == 'u')
+		return (fc_print_uns(va_arg(args, unsigned int)));
+	else if (str[idx] == 'x')
+		return (fc_print_hex(va_arg(args, unsigned int), 0));
+	else if (str[idx] == 'X')
+		return (fc_print_hex(va_arg(args, unsigned int), 1));
+	else if (str[idx] == '%')
+		return (fc_putchar('%'));
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list		args;
-	t_list		*print;
 	int			nbr;
 
 	va_start(args, str);
 	nbr = 0;
-	split_source(print, args, str);
-	while (print)
+	while (*str)
 	{
-		nbr += fc_putstr(print->content);
-		print = print->next;
+		if (*str == '%' && *str++ != '\0')
+		{
+			nbr += find_conv(str, args, 0);
+			str++;
+		}
+		else if (*str != '\0')
+		{
+			nbr += write(1, str, 1);
+			/*need to change this to print until it finds a specifier, but for now, this works*/
+		}
+		str++;
+
 	}
-	free_mem(print);
 	va_end(args);
 	return (nbr);
 }

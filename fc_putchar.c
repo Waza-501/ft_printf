@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.c                                            :+:    :+:            */
+/*   fc_putchar.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/21 16:02:03 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/24 16:56:49 by owen          ########   odam.nl         */
+/*   Created: 2024/10/24 12:08:39 by owen          #+#    #+#                 */
+/*   Updated: 2024/10/24 12:21:56 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	is_specifier(char c)
+int	fc_putchar(char c)
 {
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd'
-		|| c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%');
-}
+	int	tally;
 
-size_t	ft_strsrc(char *str)
-{
-	size_t	size;
-
-	size = 0;
-	while (str[size] != '%' && str[size] != '\0') 
-		size++;
-	return (size);
-}
-
-size_t	ft_strlen(char *str)
-{
-	size_t	size;
-
-	size = 0;
-	while (str[size])
-		size++;
-	return (size);
+	tally = write (1, &c, 1);
+	return (tally);
 }
