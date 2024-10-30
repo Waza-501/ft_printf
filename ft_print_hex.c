@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   fc_print hex.c                                     :+:    :+:            */
+/*   ft_print_hex.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/24 12:32:05 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/24 17:10:06 by owen          ########   odam.nl         */
+/*   Created: 2024/10/29 11:27:06 by owen          #+#    #+#                 */
+/*   Updated: 2024/10/30 11:11:37 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int fc_print_hex(void *pnt)
+int	fc_print_hex(unsigned int hex, int upper)
 {
-	int 			size;
-	unsigned long	 nbr;
-	char			*hex;
-
-	return (size);
+	
 }

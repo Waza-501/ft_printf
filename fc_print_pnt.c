@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test.c                                             :+:    :+:            */
+/*   fc_print_pnt.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/21 16:27:30 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/22 11:36:06 by owhearn       ########   odam.nl         */
+/*   Created: 2024/10/24 12:32:05 by owen          #+#    #+#                 */
+/*   Updated: 2024/10/29 09:15:16 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
-int	main(void)
+int fc_print_pnt(unsigned long *pnt)
 {
-	printf("%\n");
-	return (0);
+	int 			size;
+	unsigned long	nbr;
+
+	size = 0;
+	nbr = (*pnt % 16);
+	if (*pnt > 15)
+		fc_print_pnt(nbr / 16);
+	if (nbr < 10)
+		size += fc_putchar((nbr + '0'));
+	else
+		size += fc_putchar((nbr + '0' + 32));
+	return (size);
+}
+
+int	fc_putpnt(void *pnt)
+{
+	int	size;
+
+	size = write(1, "0x", 2);
+	size += fc_print_hex((unsigned long)pnt, 0);
+	return (size);
 }
