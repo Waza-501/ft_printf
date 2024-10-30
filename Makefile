@@ -1,4 +1,11 @@
-SRCS	=	ft_printf.c\
+SRCS	=	fc_print_dec.c\
+			fc_print_hex.c\
+			fc_print_int.c\
+			fc_print_pnt.c\
+			fc_putchar.c\
+			fc_putstr.c\
+			utils.c\
+			ft_printf.c\
 				
 NAME	=	libftprintf.a
 CC		=	cc

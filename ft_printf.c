@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 15:58:34 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/10/25 12:59:35 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/10/30 15:14:03 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ static int	find_conv(const char *str, va_list args, int idx)
 		return (fc_print_int(va_arg(args, int)));
 	else if (str[idx] == 'u')
 		return (fc_print_uns(va_arg(args, unsigned int)));
-	else if (str[idx] == 'x')
-		return (fc_print_hex(va_arg(args, unsigned int), 0));
-	else if (str[idx] == 'X')
-		return (fc_print_hex(va_arg(args, unsigned int), 1));
+	else if (str[idx] == 'x' || str[idx] == 'X')
+		return (fc_print_hex(va_arg(args, unsigned int), str[idx]));
 	else if (str[idx] == '%')
 		return (fc_putchar('%'));
 	return (0);
