@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/24 14:12:38 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/24 16:57:04 by owen          ########   odam.nl         */
+/*   Updated: 2024/10/25 12:56:38 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	fc_print_dec(unsigned int dec)
 {
-	int 			size;
-	unsigned int 	nbr;
+	int				size;
+	unsigned int	nbr;
 
 	size = 0;
 	nbr = (dec % 10);
