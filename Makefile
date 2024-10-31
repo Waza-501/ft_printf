@@ -1,7 +1,7 @@
-SRCS	=	fc_print_dec.c\
-			fc_print_hex.c\
+SRCS	=	fc_print_hex.c\
 			fc_print_int.c\
 			fc_print_pnt.c\
+			fc_print_uns.c\
 			fc_putchar.c\
 			fc_putstr.c\
 			utils.c\

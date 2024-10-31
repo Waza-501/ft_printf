@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/24 12:16:54 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/25 12:57:20 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/10/31 13:16:23 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	fc_putstr(char *str)
 {
 	int	size;
 
-	size = write(1, str, ft_strlen(str));
+	size = 0;
+	if (str)
+		size += write(1, str, ft_strlen(str));
+	else
+		size += write(1, "(null)", 6);
 	return (size);
 }

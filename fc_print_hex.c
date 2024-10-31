@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_print_hex.c                                     :+:    :+:            */
+/*   fc_print_hex.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/29 11:27:06 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/30 13:31:19 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/10/31 13:21:05 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	hex_conv(unsigned int hex, int mod)
+static int	hex_conv(unsigned long hex, int mod)
 {
 	int				size;
-	unsigned int	nbr;
+	unsigned long	nbr;
 
 	size = 0;
-	nbr = hex / 16;
+	nbr = (hex % 16);
 	if (hex > 15)
 	{
-		size += hex_conv((hex % 16), mod);
+		size += hex_conv((hex / 16), mod);
 	}
-	if (hex < 10)
-		size += fc_putchar(hex + '0');
+	if (nbr < 10)
+		size += fc_putchar(nbr + '0');
 	else
-		size += fc_putchar(hex + '0' + mod);
+		size += fc_putchar(nbr + (55 + mod));
 	return (size);
 }
 
-int	fc_print_hex(unsigned int hex, int id)
+int	fc_print_hex(unsigned long hex, int id)
 {
 	int				mod;
 	int				size;

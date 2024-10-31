@@ -6,19 +6,25 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 16:02:03 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/25 12:57:48 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/10/31 13:11:49 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	is_specifier(char c)
+void	ft_reset_data(t_data *data)
 {
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd'
-		|| c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%');
+	data->idx = 0;
+	data->count = 0;
 }
 
-size_t	ft_strsrc(char *str)
+void	ft_set_data(t_data *data)
+{
+	data->idx = 0;
+	data->count = 0;
+}
+
+size_t	ft_strsrc(const char *str)
 {
 	size_t	size;
 

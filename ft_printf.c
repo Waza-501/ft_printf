@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 15:58:34 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/10/30 15:14:03 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/10/31 12:08:20 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ static int	find_conv(const char *str, va_list args, int idx)
 		return (fc_putstr(va_arg(args, char *)));
 	else if (str[idx] == 'p')
 		return (fc_putpnt(va_arg(args, void *)));
-	else if (str[idx] == 'd')
-		return (fc_print_dec(va_arg(args, int)));
-	else if (str[idx] == 'i')
+	else if (str[idx] == 'd' || str[idx] == 'i')
 		return (fc_print_int(va_arg(args, int)));
 	else if (str[idx] == 'u')
 		return (fc_print_uns(va_arg(args, unsigned int)));
@@ -34,28 +32,37 @@ static int	find_conv(const char *str, va_list args, int idx)
 	return (0);
 }
 
+static int	print_else(const char *str, int i, t_data *data)
+{
+	int	size;
+
+	size = ft_strsrc(&str[i]);
+	data->count += write(1, &str[i], size);
+	return (size);
+}
+
 /*need to change this to print until it finds
 a specifier,but for now, this works*/
 int	ft_printf(const char *str, ...)
 {
 	va_list		args;
-	int			nbr;
+	t_data		data;
+	int			i;
 
 	va_start(args, str);
-	nbr = 0;
-	while (*str)
+	i = 0;
+	ft_set_data(&data);
+	while (str[i])
 	{
-		if (*str == '%' && *str++ != '\0')
+		if (str[i] == '%' && str[i + 1] != '\0')
 		{
-			nbr += find_conv(str, args, 0);
-			str++;
+			data.count += find_conv(str, args, i + 1);
+			i += 2;;
 		}
-		else if (*str != '\0')
-		{
-			nbr += write(1, str, 1);
-		}
-		str++;
+		else
+			i += print_else(str, i, &data);
+			//data->count += write(1, str, 1);
 	}
 	va_end(args);
-	return (nbr);
+	return (data.count);
 }
