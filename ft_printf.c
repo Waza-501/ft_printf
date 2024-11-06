@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 15:58:34 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/10/31 12:08:20 by owen          ########   odam.nl         */
+/*   Updated: 2024/11/01 09:54:49 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static int	print_else(const char *str, int i, t_data *data)
 	return (size);
 }
 
-/*need to change this to print until it finds
-a specifier,but for now, this works*/
 int	ft_printf(const char *str, ...)
 {
 	va_list		args;
@@ -61,7 +59,6 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 			i += print_else(str, i, &data);
-			//data->count += write(1, str, 1);
 	}
 	va_end(args);
 	return (data.count);
