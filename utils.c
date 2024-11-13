@@ -6,21 +6,14 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 16:02:03 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/31 13:11:49 by owen          ########   odam.nl         */
+/*   Updated: 2024/11/07 13:21:43 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_reset_data(t_data *data)
-{
-	data->idx = 0;
-	data->count = 0;
-}
-
 void	ft_set_data(t_data *data)
 {
-	data->idx = 0;
 	data->count = 0;
 }
 

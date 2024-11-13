@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/24 12:32:05 by owen          #+#    #+#                 */
-/*   Updated: 2024/10/31 13:15:18 by owen          ########   odam.nl         */
+/*   Updated: 2024/11/07 13:21:34 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ int	fc_print_pnt(unsigned long pnt)
 	return (size);
 }
 
-int	fc_putpnt(void *pnt)
+int	fc_putpnt(uintptr_t *ptr)
 {
 	int	size;
 
 	size = 0;
-	if (!pnt)
+	if (!ptr)
 	{
 		size += write(1, "(nil)", 5);
 		return (size);
 	}
 	size = write(1, "0x", 2);
-	size += fc_print_pnt((unsigned long)pnt);
+	size += fc_print_pnt((unsigned long)ptr);
 	return (size);
 }
