@@ -6,14 +6,14 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 15:58:34 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/11/07 13:33:56 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/11/14 13:59:10 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
 
-static int	find_conv(const char *str, va_list args, int idx)
+static int	find_conv(const char *str, va_list args, int idx, t_data *data)
 {
 	if (str[idx] == 'c')
 		return (fc_putchar(va_arg(args, int)));
@@ -29,6 +29,7 @@ static int	find_conv(const char *str, va_list args, int idx)
 		return (fc_print_hex(va_arg(args, unsigned int), str[idx]));
 	else if (str[idx] == '%')
 		return (fc_putchar('%'));
+	data->invalid = 1;
 	return (0);
 }
 
@@ -39,6 +40,17 @@ static int	print_else(const char *str, int i, t_data *data)
 	size = ft_strsrc(&str[i]);
 	data->count += write(1, &str[i], size);
 	return (size);
+}
+
+static int	per_check(const char *str, va_list args, int i, t_data *data)
+{
+	data->count += find_conv(str, args, i + 1, data);
+	if (data->invalid == 1)
+	{
+		data->invalid = 0;
+		return (1);
+	}
+	return (2);
 }
 
 int	ft_printf(const char *str, ...)
@@ -53,10 +65,9 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%' && str[i + 1] != '\0')
-		{
-			data.count += find_conv(str, args, i + 1);
-			i += 2;
-		}
+			i += per_check(str, args, i, &data);
+		else if (str[i] == '%' && str[i + 1] == '\0')
+			break ;
 		else
 			i += print_else(str, i, &data);
 	}

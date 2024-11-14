@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:36:01 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/11/07 13:16:21 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/11/14 13:18:27 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_data
 {
 	int		count;
+	int		invalid;
 }	t_data;
 
 void	ft_set_data(t_data *data);
