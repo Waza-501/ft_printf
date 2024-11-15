@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 15:58:34 by owhearn       #+#    #+#                 */
-/*   Updated: 2024/11/14 13:59:10 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/11/15 16:54:01 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	i = 0;
 	ft_set_data(&data);
-	while (str[i])
+	while (str && str[i])
 	{
 		if (str[i] == '%' && str[i + 1] != '\0')
 			i += per_check(str, args, i, &data);

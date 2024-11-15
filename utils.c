@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 16:02:03 by owen          #+#    #+#                 */
-/*   Updated: 2024/11/14 13:18:22 by owhearn       ########   odam.nl         */
+/*   Updated: 2024/11/15 16:54:19 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_strlen(char *str)
 	size_t	size;
 
 	size = 0;
-	while (str[size])
+	while (str && str[size])
 		size++;
 	return (size);
 }
